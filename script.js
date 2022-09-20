@@ -50,7 +50,7 @@
 
         heartShape.moveTo( 25, 25 );
 
-        heartShape.bezierCurveTo( 0, 0, 0 , 20, 25 , 25);
+        heartShape.bezierCurveTo(  25 , 25,20, 0 , 0, 0);
         heartShape.bezierCurveTo( - 30, 0, - 30, 35, - 30, 35 );
         heartShape.bezierCurveTo( - 30, 55, - 10, 77, 25, 95 );
         heartShape.bezierCurveTo( 60, 77, 80, 55, 80, 35 );
