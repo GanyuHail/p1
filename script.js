@@ -41,7 +41,7 @@
         ambientLight.castShadow = true;
         scene.add(ambientLight);
 
-        const spotLight = new THREE.SpotLight(0xF7A8B8, 2.4);
+        const spotLight = new THREE.SpotLight(0xF7A8B8, 1.2);
         spotLight.castShadow = true;
         spotLight.position.set(100, 64, 32);
         scene.add(spotLight);
