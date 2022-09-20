@@ -58,7 +58,7 @@
         heartShape.bezierCurveTo(x + 7, y, x + 5, y + 5, x + 5, y + 5);
 
         const heartGeometry = new THREE.ShapeGeometry(heartShape);
-        const heartTex = new THREE.TextureLoader().load('https://raw.githubusercontent.com/GanyuHail/port3c/main/src/mars.jpg');
+        const heartTex = new THREE.TextureLoader().load('https://raw.githubusercontent.com/GanyuHail/p1/main/src/weOpMin.jpg');
         const heartMaterial = new THREE.MeshStandardMaterial({ map: heartTex });
         const heartMesh = new THREE.Mesh(heartGeometry, heartMaterial);
         scene.add(heartMesh);
