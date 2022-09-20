@@ -46,27 +46,22 @@
         spotLight.position.set(100, 64, 32);
         scene.add(spotLight);
 
-        const sphereGeometry = new THREE.SphereGeometry(100, 64, 32);
-        const sphereTex = new THREE.TextureLoader().load('https://raw.githubusercontent.com/GanyuHail/port3c/main/src/mars.jpg');
-        const sphereMaterial = new THREE.MeshStandardMaterial({ map: sphereTex });
-        const sphereMesh = new THREE.Mesh(sphereGeometry, sphereMaterial);
-        scene.add(sphereMesh);
+        const x = 0, y = 0;
+        const heartShape = new THREE.Shape();
 
-        const sphereGeometry2 = new THREE.SphereGeometry(75, 64, 32);
-        const sphereMesh2 = new THREE.Mesh(sphereGeometry2);
-        scene.add(sphereMesh2);
+        heartShape.moveTo(x + 5, y + 5);
+        heartShape.bezierCurveTo(x + 5, y + 5, x + 4, y, x, y);
+        heartShape.bezierCurveTo(x - 6, y, x - 6, y + 7, x - 6, y + 7);
+        heartShape.bezierCurveTo(x - 6, y + 11, x - 3, y + 15.4, x + 5, y + 19);
+        heartShape.bezierCurveTo(x + 12, y + 15.4, x + 16, y + 11, x + 16, y + 7);
+        heartShape.bezierCurveTo(x + 16, y + 7, x + 16, y, x + 10, y);
+        heartShape.bezierCurveTo(x + 7, y, x + 5, y + 5, x + 5, y + 5);
 
-        const sphereGeometry3 = new THREE.SphereGeometry(50, 64, 32);
-        const sphereMesh3 = new THREE.Mesh(sphereGeometry3);
-        scene.add(sphereMesh3);
-
-        const sphereGeometry4 = new THREE.SphereGeometry(25, 64, 32);
-        const sphereMesh4 = new THREE.Mesh(sphereGeometry4);
-        scene.add(sphereMesh4);
-
-        const sphereGeometry5 = new THREE.SphereGeometry(5, 64, 32);
-        const sphereMesh5 = new THREE.Mesh(sphereGeometry5);
-        scene.add(sphereMesh5);
+        const heartGeometry = new THREE.ShapeGeometry(heartShape);
+        const heartTex = new THREE.TextureLoader().load('https://raw.githubusercontent.com/GanyuHail/port3c/main/src/mars.jpg');
+        const heartMaterial = new THREE.MeshStandardMaterial({ map: heartTex });
+        const heartMesh = new THREE.Mesh(heartGeometry, heartMaterial);
+        scene.add(heartMesh);
 
         container = document.createElement('div');
         document.body.appendChild(container);
