@@ -46,7 +46,6 @@
         spotLight.position.set(100, 64, 32);
         scene.add(spotLight);
 
-        const x = 0, y = 0;
         const heartShape = new THREE.Shape();
 
         heartShape.moveTo( 25, 25 );
@@ -66,18 +65,8 @@
         scene.add(heartMesh);
 
         const raycaster = new THREE.Raycaster()
-
-        function raycast()
-        {
-          var cameradirection = new THREE.Vector3();
-          camera.getWorldDirection(cameradirection);
-          cameradirection.normalize();
-          var cameraorigin = new THREE.Vector3();
-          camera.getWorldPosition(cameraorigin);
-          var raycaster = new THREE.Raycaster(cameraorigin, cameradirection);
-          var intersects = raycaster.intersectObjects([heartMesh], false);
-          if (intersects.length) {window.open("./store.html");};
-        };
+        var intersects = raycaster.intersectObjects([heartMesh], false);
+        if (intersects.length) {window.open("./store.html");};
 
         container = document.createElement('div');
         document.body.appendChild(container);
