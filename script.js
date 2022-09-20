@@ -25,7 +25,7 @@
 
         fieldOfView = 100;
         aspectRatio = WIDTH / HEIGHT;
-        nearPlane = 0;
+        nearPlane = 1;
         farPlane = 3000;
 
         cameraZ = farPlane / 2;
