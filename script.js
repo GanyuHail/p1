@@ -148,7 +148,7 @@
         raycaster.setFromCamera(pointer, camera);
         const intersects = raycaster.intersectObjects( scene.children );
         for (let i = 0; i < intersects.length; i++) {
-            if (intersects.length) { onclick="./store.html" };
+            if (intersects.length) { onclick = "location.href='./store.html';" };
         }
 
         renderer.render(scene, camera);
