@@ -23,9 +23,9 @@
         windowHalfX = WIDTH / 2;
         windowHalfY = HEIGHT / 2;
 
-        fieldOfView = 100;
+        fieldOfView = 110;
         aspectRatio = WIDTH / HEIGHT;
-        nearPlane = 50;
+        nearPlane = 25;
         farPlane = 2000;
 
         cameraZ = farPlane / 1.5;
@@ -53,17 +53,13 @@
         const paintMesh = new THREE.Mesh(paintGeometry, paintMaterial);
         scene.add(paintMesh);
 
-        //const raycaster = new THREE.Raycaster()
-        //var intersects = raycaster.intersectObjects([paintMesh], false);
-        //if (intersects.length) { window.open("./store.html"); };
-
         container = document.createElement('div');
         document.body.appendChild(container);
         document.body.style.margin = 0;
         document.body.style.overflow = 'hidden';
 
         geometry = new THREE.Geometry();
-        particleCount = 10000;
+        particleCount = 1000;
 
         for (i = 0; i < particleCount; i++) {
 
@@ -125,7 +121,7 @@
     }
 
     function render() {
-        var time = Date.now() * 0.00005;
+        var time = Date.now() * 0.0005;
 
         camera.position.x += (mouseX - camera.position.x) * 0.1;
         camera.position.y += (-mouseY - camera.position.y) * 0.1;
