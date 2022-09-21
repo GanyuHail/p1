@@ -35,7 +35,7 @@
         camera.position.z = cameraZ;
 
         scene = new THREE.Scene();
-        scene.background = new THREE.color('lightblue');
+        //scene.background = new THREE.color('lightblue');
         scene.fog = new THREE.FogExp2(fogHex, fogDensity);
 
         const ambientLight = new THREE.AmbientLight(0xffffff, 1.75);
