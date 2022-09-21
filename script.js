@@ -148,7 +148,7 @@
         const raycaster = new THREE.Raycaster();
         const pointer = new THREE.Vector2();
         raycaster.setFromCamera(pointer, camera);
-        var intersects = raycaster.intersectObjects([paintMesh], false);
+        const intersects = raycaster.intersectObjects( scene.children );
         for (let i = 0; i < intersects.length; i++) {
             if (intersects.length) { window.open("./store.html")};
         }
