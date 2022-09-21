@@ -37,7 +37,7 @@
         scene = new THREE.Scene();
         scene.fog = new THREE.FogExp2(fogHex, fogDensity);
 
-        const ambientLight = new THREE.AmbientLight(0xffffff, 2.4);
+        const ambientLight = new THREE.AmbientLight(0xffffff, 1);
         ambientLight.castShadow = true;
         scene.add(ambientLight);
 
@@ -46,7 +46,7 @@
         spotLight.position.set(100, 64, 32);
         //scene.add(spotLight);
 
-        const paintGeometry = new THREE.BoxGeometry(10, 10, 1);
+        const paintGeometry = new THREE.BoxGeometry(10, 10, 0.1);
 
         const paintTex = new THREE.TextureLoader().load('https://raw.githubusercontent.com/GanyuHail/p1/main/src/weOpMin.jpg');
         const paintMaterial = new THREE.MeshStandardMaterial({ map: paintTex });
