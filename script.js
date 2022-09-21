@@ -28,11 +28,13 @@
         nearPlane = 1;
         farPlane = 2000;
 
-        cameraZ = farPlane / 1.5;
         fogHex = 0x000000;
         fogDensity = 0.0007;
-        camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, nearPlane, farPlane);
-        camera.position.z = cameraZ;
+
+        const camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, nearPlane, farPlane);
+        const controls = new OrbitControls(camera, renderer.domElement);
+        camera.position.set(0, 20, 100);
+        controls.update();
 
         scene = new THREE.Scene();
         //scene.background = new THREE.color('lightblue');
@@ -119,16 +121,17 @@
 
     function animate() {
         requestAnimationFrame(animate);
+        controls.update();
         render();
     }
 
     function render() {
         var time = Date.now() * 0.000005;
 
-        camera.position.x += (mouseX - camera.position.x) * 0.1;
-        camera.position.y += (-mouseY - camera.position.y) * 0.1;
-        camera.position.z += (mouseY - camera.position.z) * 0.01;
-        camera.lookAt(scene.position);
+        //camera.position.x += (mouseX - camera.position.x) * 0.1;
+        //camera.position.y += (-mouseY - camera.position.y) * 0.1;
+        //camera.position.z += (mouseY - camera.position.z) * 0.01;
+        //camera.lookAt(scene.position);
 
         for (i = 0; i < scene.children.length; i++) {
             var object = scene.children[i];
@@ -146,13 +149,13 @@
         const raycaster = new THREE.Raycaster();
         const pointer = new THREE.Vector2();
         raycaster.setFromCamera(pointer, camera);
-        const intersects = raycaster.intersectObjects( scene.children );
+        const intersects = raycaster.intersectObjects(scene.children);
         for (let i = 0; i < intersects.length; i++) {
             if (intersects.length) { onclick = "location.href='./store.html';" };
         }
 
         renderer.render(scene, camera);
-        
+
     }
 
     function onDocumentMouseMove(e) {
