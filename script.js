@@ -127,9 +127,9 @@
     function render() {
         var time = Date.now() * 0.00005;
 
-        camera.position.x += (mouseX - camera.position.x) * 0.05;
-        camera.position.y += (-mouseY - camera.position.y) * 0.05;
-        camera.position.z += (mouseY - camera.position.z) * 0.001;
+        camera.position.x += (mouseX - camera.position.x) * 0.1;
+        camera.position.y += (-mouseY - camera.position.y) * 0.1;
+        camera.position.z += (mouseY - camera.position.z) * 0.01;
         camera.lookAt(scene.position);
 
         for (i = 0; i < scene.children.length; i++) {
