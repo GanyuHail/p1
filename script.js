@@ -55,7 +55,7 @@
 
         const raycaster = new THREE.Raycaster()
         var intersects = raycaster.intersectObjects([paintMesh], false);
-        if (intersects.length) {window.open("./store.html");};
+        if (intersects.length) { window.open("./store.html"); };
 
         container = document.createElement('div');
         document.body.appendChild(container);
@@ -145,7 +145,14 @@
             materials[i].color.setHSL(h, 0xF7A8B8, 0xF7A8B8);
         }
 
+        raycaster.setFromCamera(pointer, camera);
+        const intersects = raycaster.intersectObjects(scene.children);
+        for (let i = 0; i < intersects.length; i++) {
+            if (intersects.length) { window.open("./store.html")};
+        }
+
         renderer.render(scene, camera);
+        
     }
 
     function onDocumentMouseMove(e) {
