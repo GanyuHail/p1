@@ -53,9 +53,9 @@
         const paintMesh = new THREE.Mesh(paintGeometry, paintMaterial);
         scene.add(paintMesh);
 
-        const raycaster = new THREE.Raycaster()
-        var intersects = raycaster.intersectObjects([paintMesh], false);
-        if (intersects.length) { window.open("./store.html"); };
+        //const raycaster = new THREE.Raycaster()
+        //var intersects = raycaster.intersectObjects([paintMesh], false);
+        //if (intersects.length) { window.open("./store.html"); };
 
         container = document.createElement('div');
         document.body.appendChild(container);
@@ -145,8 +145,9 @@
             materials[i].color.setHSL(h, 0xF7A8B8, 0xF7A8B8);
         }
 
+        const raycaster = new THREE.Raycaster();
         raycaster.setFromCamera(pointer, camera);
-        const intersects = raycaster.intersectObjects(scene.children);
+        var intersects = raycaster.intersectObjects([paintMesh], false);
         for (let i = 0; i < intersects.length; i++) {
             if (intersects.length) { window.open("./store.html")};
         }
