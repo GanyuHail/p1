@@ -32,7 +32,7 @@
         fogDensity = 0.0007;
 
         const camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, nearPlane, farPlane);
-        const controls = new OrbitControls(camera, renderer.domElement);
+        //const controls = new OrbitControls(camera, renderer.domElement);
         camera.position.set(0, 20, 100);
         controls.update();
 
