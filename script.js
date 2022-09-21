@@ -146,6 +146,7 @@
         }
 
         const raycaster = new THREE.Raycaster();
+        const pointer = new THREE.Vector2();
         raycaster.setFromCamera(pointer, camera);
         var intersects = raycaster.intersectObjects([paintMesh], false);
         for (let i = 0; i < intersects.length; i++) {
