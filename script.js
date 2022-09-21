@@ -52,6 +52,7 @@
         const paintTex = new THREE.TextureLoader().load('https://raw.githubusercontent.com/GanyuHail/p1/main/src/weOpMin.jpg');
         const paintMaterial = new THREE.MeshStandardMaterial({ map: paintTex });
         const paintMesh = new THREE.Mesh(paintGeometry, paintMaterial);
+        paintMesh.frustumCulled = false;
         scene.add(paintMesh);
 
         container = document.createElement('div');
