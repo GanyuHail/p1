@@ -34,7 +34,7 @@
         const camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, nearPlane, farPlane);
         //const controls = new OrbitControls(camera, renderer.domElement);
         camera.position.set(0, 20, 100);
-        controls.update();
+        //controls.update();
 
         scene = new THREE.Scene();
         //scene.background = new THREE.color('lightblue');
@@ -121,7 +121,7 @@
 
     function animate() {
         requestAnimationFrame(animate);
-        controls.update();
+        //controls.update();
         render();
     }
 
