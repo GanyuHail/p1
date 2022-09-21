@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    var scene, camera, renderer, raycaster;
+    var scene, camera, renderer, raycaster, OrbitControls;
     var container, HEIGHT,
         WIDTH, fieldOfView, aspectRatio,
         nearPlane, farPlane,
