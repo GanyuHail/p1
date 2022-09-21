@@ -31,7 +31,7 @@
         fogHex = 0x000000;
         fogDensity = 0.0007;
 
-        const camera = new THREE.Camera(fieldOfView, aspectRatio, nearPlane, farPlane);
+        camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, nearPlane, farPlane);
         //const controls = new OrbitControls(camera, renderer.domElement);
         camera.position.set(0, 20, 100);
         //controls.update();
@@ -128,10 +128,10 @@
     function render() {
         var time = Date.now() * 0.000005;
 
-        //camera.position.x += (mouseX - camera.position.x) * 0.1;
-        //camera.position.y += (-mouseY - camera.position.y) * 0.1;
-        //camera.position.z += (mouseY - camera.position.z) * 0.01;
-        //camera.lookAt(scene.position);
+        camera.position.x += (mouseX - camera.position.x) * 0.1;
+        camera.position.y += (-mouseY - camera.position.y) * 0.1;
+        camera.position.z += (mouseY - camera.position.z) * 0.01;
+        camera.lookAt(scene.position);
 
         for (i = 0; i < scene.children.length; i++) {
             var object = scene.children[i];
