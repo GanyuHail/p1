@@ -25,8 +25,8 @@
 
         fieldOfView = 100;
         aspectRatio = WIDTH / HEIGHT;
-        nearPlane = 1;
-        farPlane = 3000;
+        nearPlane = 50;
+        farPlane = 2000;
 
         cameraZ = farPlane / 2;
         fogHex = 0x000000;
