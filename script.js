@@ -24,7 +24,7 @@
         windowHalfY = HEIGHT / 2;
 
         fieldOfView = 110;
-        aspectRatio = WIDTH / HEIGHT;
+        aspectRatio = WIDTH / HEIGHT * 1.5;
         nearPlane = 25;
         farPlane = 2000;
 
@@ -35,6 +35,7 @@
         camera.position.z = cameraZ;
 
         scene = new THREE.Scene();
+        scene.background = new THREE.color('lightblue');
         scene.fog = new THREE.FogExp2(fogHex, fogDensity);
 
         const ambientLight = new THREE.AmbientLight(0xffffff, 1.75);
@@ -121,7 +122,7 @@
     }
 
     function render() {
-        var time = Date.now() * 0.0005;
+        var time = Date.now() * 0.000005;
 
         camera.position.x += (mouseX - camera.position.x) * 0.1;
         camera.position.y += (-mouseY - camera.position.y) * 0.1;
