@@ -127,6 +127,7 @@
     }
 
     function render() {
+        antialiasing = true;
         var time = Date.now() * 0.000005;
 
         camera.position.x += (mouseX - camera.position.x) * 0.1;
