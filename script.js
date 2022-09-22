@@ -24,7 +24,7 @@
         windowHalfY = HEIGHT / 2;
 
         fieldOfView = 100;
-        aspectRatio = WIDTH / HEIGHT * 2;
+        aspectRatio = WIDTH / HEIGHT;
         nearPlane = 2;
         farPlane = 2000;
 
@@ -34,6 +34,7 @@
         camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, nearPlane, farPlane);
         //const controls = new OrbitControls(camera, renderer.domElement);
         camera.position.set(0, 20, 100);
+        paintMesh.frustumCulled = false;
         //controls.update();
 
         scene = new THREE.Scene();
@@ -54,7 +55,6 @@
         const paintTex = new THREE.TextureLoader().load('https://raw.githubusercontent.com/GanyuHail/p1/main/src/weOpMin.jpg');
         const paintMaterial = new THREE.MeshStandardMaterial({ map: paintTex });
         const paintMesh = new THREE.Mesh(paintGeometry, paintMaterial);
-        paintMesh.frustumCulled = false;
         scene.add(paintMesh);
 
         container = document.createElement('div');
