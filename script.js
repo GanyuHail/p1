@@ -34,7 +34,6 @@
         camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, nearPlane, farPlane);
         //const controls = new OrbitControls(camera, renderer.domElement);
         camera.position.set(0, 20, 100);
-        paintMesh.frustumCulled = false;
         //controls.update();
 
         scene = new THREE.Scene();
@@ -56,6 +55,7 @@
         const paintMaterial = new THREE.MeshStandardMaterial({ map: paintTex });
         const paintMesh = new THREE.Mesh(paintGeometry, paintMaterial);
         scene.add(paintMesh);
+        paintMesh.frustumCulled = false;
 
         container = document.createElement('div');
         document.body.appendChild(container);
@@ -117,6 +117,7 @@
         document.addEventListener('mousemove', onDocumentMouseMove, false);
         document.addEventListener('touchstart', onDocumentTouchStart, false);
         document.addEventListener('touchmove', onDocumentTouchMove, false);
+        document.addEventListener('scroll', onDocumentScroll, false);
     }
 
     function animate() {
@@ -185,5 +186,9 @@
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    function onDocumentScroll() {
+        camera.position.z = 10 - window.scrollY / 500.0;
     }
 })();
