@@ -25,7 +25,7 @@
 
         fieldOfView = 100;
         aspectRatio = WIDTH / HEIGHT;
-        nearPlane = 20;
+        nearPlane = 15;
         farPlane = 2000;
 
         fogHex = 0x000000;
@@ -34,6 +34,7 @@
         camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, nearPlane, farPlane);
         //const controls = new OrbitControls(camera, renderer.domElement);
         camera.position.set(0, 20, 100);
+        camera.setViewOffset.far(25);
         //controls.update();
 
         scene = new THREE.Scene();
