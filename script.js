@@ -34,7 +34,6 @@
         camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, nearPlane, farPlane);
         //const controls = new OrbitControls(camera, renderer.domElement);
         camera.position.set(0, 20, 100);
-        camera.setViewOffset.far(25);
         //controls.update();
 
         scene = new THREE.Scene();
