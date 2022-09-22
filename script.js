@@ -127,7 +127,7 @@
     }
 
     function render() {
-        antialiasing = true;
+        antialias = true;
         var time = Date.now() * 0.000005;
 
         camera.position.x += (mouseX - camera.position.x) * 0.1;
@@ -153,7 +153,7 @@
         raycaster.setFromCamera(pointer, camera);
         const intersects = raycaster.intersectObjects(scene.children);
         for (let i = 0; i < intersects.length; i++) {
-            if (intersects.length) { onclick = "location.href='./store.html';" };
+            if (intersects.length) { onclick = "location.href='./p1/store.html';" };
         }
 
         renderer.render(scene, camera);
