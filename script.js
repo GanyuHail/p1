@@ -23,9 +23,9 @@
         windowHalfX = WIDTH / 2;
         windowHalfY = HEIGHT / 2;
 
-        fieldOfView = 110;
-        aspectRatio = WIDTH / HEIGHT * 1.5;
-        nearPlane = 1;
+        fieldOfView = 100;
+        aspectRatio = WIDTH / HEIGHT * 2;
+        nearPlane = 2;
         farPlane = 2000;
 
         fogHex = 0x000000;
