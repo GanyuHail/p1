@@ -112,7 +112,7 @@
         renderer = new THREE.WebGLRenderer();
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(WIDTH, HEIGHT);
-        renderer.antialias = true; 
+        renderer.antialias = true;
         container.appendChild(renderer.domElement);
         window.addEventListener('resize', onWindowResize, false);
         document.addEventListener('mousemove', onDocumentMouseMove, false);
@@ -133,7 +133,7 @@
         camera.position.x += (mouseX - camera.position.x) * 0.1;
         camera.position.y += (-mouseY - camera.position.y) * 0.1;
         camera.position.z += (mouseY - camera.position.z) * 0.001;
-        
+
         camera.lookAt(scene.position);
 
         for (i = 0; i < scene.children.length; i++) {
@@ -149,12 +149,17 @@
             materials[i].color.setHSL(h, 0xF7A8B8, 0xF7A8B8);
         }
 
-        const raycaster = new THREE.Raycaster();
-        const pointer = new THREE.Vector2();
-        raycaster.setFromCamera(pointer, camera);
-        const intersects = raycaster.intersectObjects(scene.children);
-        for (let i = 0; i < intersects.length; i++) {
-            if (intersects.length) { window.open("./store.html") };
+        document.addEventListener('mousedown', onDocumentMouseDown, false);
+        function onDocumentMouseDown(e) {
+            e.preventDefault();
+
+            const raycaster = new THREE.Raycaster();
+            const pointer = new THREE.Vector2();
+            raycaster.setFromCamera(pointer, camera);
+            const intersects = raycaster.intersectObjects(scene.children);
+            for (let i = 0; i < intersects.length; i++) {
+                if (intersects.length) { window.open("./store.html") };
+            }
         }
 
         renderer.render(scene, camera);
