@@ -112,6 +112,7 @@
         renderer = new THREE.WebGLRenderer();
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(WIDTH, HEIGHT);
+        renderer.antialias = true; 
         container.appendChild(renderer.domElement);
         window.addEventListener('resize', onWindowResize, false);
         document.addEventListener('mousemove', onDocumentMouseMove, false);
@@ -127,7 +128,6 @@
     }
 
     function render() {
-        antialias = true;
         var time = Date.now() * 0.000005;
 
         camera.position.x += (mouseX - camera.position.x) * 0.1;
