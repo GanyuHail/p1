@@ -1,5 +1,3 @@
-const { WebGLObjects } = require("three");
-
 (function () {
     'use strict';
     var scene, camera, renderer, raycaster, OrbitControls;
@@ -134,8 +132,7 @@ const { WebGLObjects } = require("three");
 
         camera.position.x += (mouseX - camera.position.x) * 0.1;
         camera.position.y += (-mouseY - camera.position.y) * 0.1;
-        while (camera.position.z < 10) {
-            camera.position.z += (mouseY - camera.position.z) * 0.001};
+        camera.position.z += (mouseY - camera.position.z) * 0.001;
         
         camera.lookAt(scene.position);
 
