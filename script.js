@@ -1,3 +1,5 @@
+const { WebGLObjects } = require("three");
+
 (function () {
     'use strict';
     var scene, camera, renderer, raycaster, OrbitControls;
@@ -130,9 +132,10 @@
     function render() {
         var time = Date.now() * 0.000005;
 
-        camera.position.x += (mouseX - camera.position.x) * 0.05;
-        camera.position.y += (-mouseY - camera.position.y) * 0.05;
-        camera.position.z += (mouseY - camera.position.z) * 0.05;
+        camera.position.x += (mouseX - camera.position.x) * 0.1;
+        camera.position.y += (-mouseY - camera.position.y) * 0.1;
+        while (i = 0, i > 10, i++) {camera.position.z += (mouseY - camera.position.z) * 0.001};
+        
         camera.lookAt(scene.position);
 
         for (i = 0; i < scene.children.length; i++) {
