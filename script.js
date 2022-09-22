@@ -25,7 +25,7 @@
 
         fieldOfView = 100;
         aspectRatio = WIDTH / HEIGHT;
-        nearPlane = 50;
+        nearPlane = 20;
         farPlane = 2000;
 
         fogHex = 0x000000;
