@@ -159,7 +159,7 @@
             raycaster.setFromCamera(pointer, camera);
             const intersects = raycaster.intersectObjects(scene.children);
 
-            if (raycaster.intersects === paintMesh) {
+            if (raycaster.intersects > 0) {
                 window.open("./store.html");
             };
         };
