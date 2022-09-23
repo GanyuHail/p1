@@ -151,15 +151,16 @@
 
         document.addEventListener('mousedown', onDocumentMouseDown, false);
         function onDocumentMouseDown(e) {
+
             e.preventDefault();
 
             const raycaster = new THREE.Raycaster();
             const pointer = new THREE.Vector2();
             raycaster.setFromCamera(pointer, camera);
             const intersects = raycaster.intersectObjects(scene.children);
-            for (let i = 0; i < 1; i++) {
-                if (intersects.length = 1) { window.open("./store.html"); return; };
-            }
+            for (let i = 0; i < intersects.length; i++) {
+                intersects[i].window.open("./store.html"); return; 
+            };
         }
 
         renderer.render(scene, camera);
