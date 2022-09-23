@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    var scene, camera, renderer, raycaster, OrbitControls;
+    var scene, camera, renderer
     var container, HEIGHT,
         WIDTH, fieldOfView, aspectRatio,
         nearPlane, farPlane,
@@ -11,7 +11,8 @@
         mouseY = 0,
         windowHalfX, windowHalfY, cameraZ,
         fogHex, fogDensity, parameters = {},
-        parameterCount, particles;
+        parameterCount, particles,
+        mouse
 
     init();
     animate();
