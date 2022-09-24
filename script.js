@@ -9,7 +9,6 @@
         materials = [],
         mouseX = 0,
         mouseY = 0,
-        windowHalfX, windowHalfY, cameraZ,
         fogHex, fogDensity, parameters = {},
         parameterCount, particles,
         mouse
@@ -128,6 +127,12 @@
         render();
     }
 
+    function onDocumentMouseMove(event) {
+        pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+        pointer.y = - (event.clientY / window.innerHeight) * 2 + 1;
+
+    };
+
     function render() {
         var time = Date.now() * 0.000005;
 
@@ -142,66 +147,50 @@
             if (object instanceof THREE.Points) {
                 object.rotation.y = time * (i < 4 ? i + 1 : -(i + 1));
             }
-        }
+        };
 
         for (i = 0; i < materials.length; i++) {
             color = parameters[i][0];
             h = (360 * (color[0] + time) % 360) / 360;
             materials[i].color.setHSL(h, 0xF7A8B8, 0xF7A8B8);
-        }
-
-        document.addEventListener('mousedown', onDocumentMouseDown, false);
-        function onDocumentMouseDown(e) {
-
-            e.preventDefault();
-
-            mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-            mouse.y = - (e.clientY / window.innerHeight) * 2 + 1;
-            var ray = new THREE.Raycaster(camera.position, vector.sub( camera.position ).normalize());
-            var vector = new THREE.Vector3 (mouse.x, mouse.y, 1);
-            projector.unprojectVector( vector, camera );
-            //raycaster.setFromCamera(pointer, camera);
-            var intersects = ray.intersectObjects(scene.children);
-
-            if (intersects.length > 0) {
-                window.open("./store.html");
-            };
         };
 
-        renderer.render(scene, camera);
+        const raycaster = new THREE.Raycaster();
+        const pointer = new THREE.Vector2();
 
-    }
+        raycaster.setFromCamera(pointer, camera);
+        const intersects = raycaster.intersectObjects(scene.children);
 
-    function onDocumentMouseMove(e) {
-        mouseX = e.clientX - windowHalfX;
-        mouseY = e.clientY - windowHalfY;
-    }
+        intersects[i].object.open("./store.html");
+    };
+    renderer.render(scene, camera);
+}
+);
 
-    function onDocumentTouchStart(e) {
-        if (e.touches.length === 1) {
-            e.preventDefault();
-            mouseX = e.touches[0].pageX - windowHalfX;
-            mouseY = e.touches[0].pageY - windowHalfY;
-        }
+function onDocumentTouchStart(e) {
+    if (e.touches.length === 1) {
+        e.preventDefault();
+        mouseX = e.touches[0].pageX - windowHalfX;
+        mouseY = e.touches[0].pageY - windowHalfY;
     }
+}
 
-    function onDocumentTouchMove(e) {
-        if (e.touches.length === 1) {
-            e.preventDefault();
-            mouseX = e.touches[0].pageX - windowHalfX;
-            mouseY = e.touches[0].pageY - windowHalfY;
-        }
+function onDocumentTouchMove(e) {
+    if (e.touches.length === 1) {
+        e.preventDefault();
+        mouseX = e.touches[0].pageX - windowHalfX;
+        mouseY = e.touches[0].pageY - windowHalfY;
     }
+}
 
-    function onWindowResize() {
-        windowHalfX = window.innerWidth / 2;
-        windowHalfY = window.innerHeight / 2;
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    }
+function onWindowResize() {
+    windowHalfX = window.innerWidth / 2;
+    windowHalfY = window.innerHeight / 2;
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
 
-    function onDocumentScroll() {
-        camera.position.z = 10 - window.scrollY / 500.0;
-    }
-})();
+function onDocumentScroll() {
+    camera.position.z = 10 - window.scrollY / 500.0;
+}
