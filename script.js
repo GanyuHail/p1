@@ -160,7 +160,7 @@
         raycaster.setFromCamera(pointer, camera);
         const intersects = raycaster.intersectObjects(scene.children);
 
-        intersects[i].object.open("./store.html");
+        intersects[i].paintMesh.open("./store.html");
         
         renderer.render(scene, camera);
     };
