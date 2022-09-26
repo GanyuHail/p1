@@ -160,8 +160,10 @@
         raycaster.setFromCamera(pointer, camera);
         const intersects = raycaster.intersectObjects(scene.children);
 
-        intersects[i].paintMesh.open("./store.html");
-        
+        for ( let i = 0; i < intersects.length; i ++ ) {
+        intersects[i].object.open("./store.html");
+        }
+
         renderer.render(scene, camera);
     };
 
