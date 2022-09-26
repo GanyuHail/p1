@@ -166,6 +166,8 @@
         renderer.render(scene, camera);
     };
 
+    var controls = new OrbitControls(camera, renderer.domElement);
+
     function onDocumentTouchStart(e) {
         if (e.touches.length === 1) {
             e.preventDefault();
