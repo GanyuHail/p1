@@ -9,6 +9,7 @@
         materials = [],
         mouseX = 0,
         mouseY = 0,
+        windowHalfX, windowHalfY, 
         fogHex, fogDensity, parameters = {},
         parameterCount, particles
 
@@ -161,35 +162,35 @@
         //const intersects = raycaster.intersectObjects(scene.children);
 
         //intersects[i].object.open("./store.html");
-    //};
-    renderer.render(scene, camera);
-};
+        //};
+        renderer.render(scene, camera);
+    };
 
-function onDocumentTouchStart(e) {
-    if (e.touches.length === 1) {
-        e.preventDefault();
-        mouseX = e.touches[0].pageX - windowHalfX;
-        mouseY = e.touches[0].pageY - windowHalfY;
+    function onDocumentTouchStart(e) {
+        if (e.touches.length === 1) {
+            e.preventDefault();
+            mouseX = e.touches[0].pageX - windowHalfX;
+            mouseY = e.touches[0].pageY - windowHalfY;
+        }
     }
-}
 
-function onDocumentTouchMove(e) {
-    if (e.touches.length === 1) {
-        e.preventDefault();
-        mouseX = e.touches[0].pageX - windowHalfX;
-        mouseY = e.touches[0].pageY - windowHalfY;
+    function onDocumentTouchMove(e) {
+        if (e.touches.length === 1) {
+            e.preventDefault();
+            mouseX = e.touches[0].pageX - windowHalfX;
+            mouseY = e.touches[0].pageY - windowHalfY;
+        }
     }
-}
 
-function onWindowResize() {
-    windowHalfX = window.innerWidth / 2;
-    windowHalfY = window.innerHeight / 2;
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-}
+    function onWindowResize() {
+        windowHalfX = window.innerWidth / 2;
+        windowHalfY = window.innerHeight / 2;
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    }
 
-function onDocumentScroll() {
-    camera.position.z = 10 - window.scrollY / 500.0;
-}
+    function onDocumentScroll() {
+        camera.position.z = 10 - window.scrollY / 500.0;
+    }
 })();
