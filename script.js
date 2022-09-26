@@ -6,10 +6,11 @@
         nearPlane, farPlane,
         geometry, particleCount, sphereMesh,
         i, h, color, size,
+        projector,
         materials = [],
         mouseX = 0,
         mouseY = 0,
-        windowHalfX, windowHalfY, 
+        windowHalfX, windowHalfY,
         fogHex, fogDensity, parameters = {},
         parameterCount, particles
 
@@ -48,6 +49,14 @@
         spotLight.castShadow = true;
         spotLight.position.set(100, 64, 32);
         scene.add(spotLight);
+
+        const arrowHelper = new THREE.ArrowHelper(
+            new THREE.Vector3(),
+            new THREE.Vector3(),
+            0.25,
+            0xffff00
+        )
+        scene.add(arrowHelper)
 
         const paintGeometry = new THREE.BoxGeometry(10, 10, 0.1);
 
@@ -118,7 +127,23 @@
         document.addEventListener('mousemove', onDocumentMouseMove, false);
         document.addEventListener('touchstart', onDocumentTouchStart, false);
         document.addEventListener('touchmove', onDocumentTouchMove, false);
-        document.addEventListener('scroll', onDocumentScroll, false);
+        renderer.domElement.addEventListener('dblclick', onDoubleClick, false);
+        renderer.domElement.addEventListener('mousemove', onMouseMove, false)
+
+        function onMouseMove(event) {
+            const mouse = {
+                mouseX: (event.clientX / renderer.domElement.clientWidth) * 2 - 1,
+                mouseY: -(event.clientY / renderer.domElement.clientHeight) * 2 + 1,
+            }
+
+            raycaster.setFromCamera(mouse, camera)
+
+            const intersects = raycaster.intersectObjects(sceneMeshes, false)
+
+            if (intersects.length > 0) {
+                window.open('./store.html')
+            }
+        }
     }
 
     function animate() {
@@ -154,23 +179,10 @@
             materials[i].color.setHSL(h, 0xF7A8B8, 0xF7A8B8);
         };
 
-        const raycaster = new THREE.Raycaster();
-        const pointer = new THREE.Vector3(mouseX, mouseY, 0.5);             
-
-        projector.unprojectVector(vector, camera);
-        var ray = new THREE.Raycaster(camera.position, vector.sub(
-                camera.position).normalize());
-
-                var intersects = ray.intersectObjects(objects);
-
-                if ( intersects.length > 0 ) {
-                window.open ('./store.html')
-            }
-
         renderer.render(scene, camera);
     }
 
-    window.requestAnimationFrame(render);
+    //window.requestAnimationFrame(render);
 
     function onDocumentTouchStart(e) {
         if (e.touches.length === 1) {
