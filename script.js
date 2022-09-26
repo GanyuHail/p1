@@ -10,8 +10,7 @@
         mouseX = 0,
         mouseY = 0,
         fogHex, fogDensity, parameters = {},
-        parameterCount, particles,
-        mouse
+        parameterCount, particles
 
     init();
     animate();
@@ -161,11 +160,10 @@
         raycaster.setFromCamera(pointer, camera);
         const intersects = raycaster.intersectObjects(scene.children);
 
-        intersects[i].object.open("./store.html");
+        //intersects[i].object.open("./store.html");
     };
     renderer.render(scene, camera);
-}
-);
+});
 
 function onDocumentTouchStart(e) {
     if (e.touches.length === 1) {
