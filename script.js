@@ -154,14 +154,14 @@
             materials[i].color.setHSL(h, 0xF7A8B8, 0xF7A8B8);
         };
 
-        //const raycaster = new THREE.Raycaster();
-        //const pointer = new THREE.Vector2();
+        const raycaster = new THREE.Raycaster();
+        const pointer = new THREE.Vector2();
 
-        //raycaster.setFromCamera(pointer, camera);
-        //const intersects = raycaster.intersectObjects(scene.children);
+        raycaster.setFromCamera(pointer, camera);
+        const intersects = raycaster.intersectObjects(scene.children);
 
-        //intersects[i].object.open("./store.html");
-        //};
+        intersects[i].object.open("./store.html");
+        
         renderer.render(scene, camera);
     };
 
