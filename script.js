@@ -127,11 +127,10 @@
         render();
     }
 
-    function onDocumentMouseMove(event) {
-        pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
-        pointer.y = - (event.clientY / window.innerHeight) * 2 + 1;
-
-    };
+    function onDocumentMouseMove(e) {
+        mouseX = e.clientX - windowHalfX;
+        mouseY = e.clientY - windowHalfY;
+    }
 
     function render() {
         var time = Date.now() * 0.000005;
@@ -165,8 +164,6 @@
         //};
         renderer.render(scene, camera);
     };
-
-    var controls = new OrbitControls(camera, renderer.domElement);
 
     function onDocumentTouchStart(e) {
         if (e.touches.length === 1) {
