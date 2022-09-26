@@ -6,6 +6,7 @@
         nearPlane, farPlane,
         geometry, particleCount, sphereMesh,
         i, h, color, size,
+        raycaster, pointer, 
         materials = [],
         mouseX = 0,
         mouseY = 0,
