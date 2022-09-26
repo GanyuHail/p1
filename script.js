@@ -6,7 +6,6 @@
         nearPlane, farPlane,
         geometry, particleCount, sphereMesh,
         i, h, color, size,
-        raycaster, pointer, 
         materials = [],
         mouseX = 0,
         mouseY = 0,
@@ -133,14 +132,6 @@
         mouseY = e.clientY - windowHalfY;
     }
 
-    const raycaster = new THREE.Raycaster();
-    const pointer = new THREE.Vector2();
-
-    function onPointerMove( event ) {
-        pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-        pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-    }
-
     function render() {
         var time = Date.now() * 0.000005;
 
@@ -162,6 +153,14 @@
             h = (360 * (color[0] + time) % 360) / 360;
             materials[i].color.setHSL(h, 0xF7A8B8, 0xF7A8B8);
         };
+
+        const raycaster = new THREE.Raycaster();
+        const pointer = new THREE.Vector2();
+    
+        function onPointerMove( event ) {
+            pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+            pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+        }
 
         raycaster.setFromCamera(pointer, camera);
         const intersects = raycaster.intersectObjects(scene.children);
