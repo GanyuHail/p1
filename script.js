@@ -155,14 +155,17 @@
         };
 
         const raycaster = new THREE.Raycaster();
-        const pointer = new THREE.Vector2();             
+        const pointer = new THREE.Vector3(mouseX, mouseY, 0.5);             
 
-        raycaster.setFromCamera(pointer, camera);
-        const intersects = raycaster.intersectObjects(scene.children);
+        projector.unprojectVector(vector, camera);
+        var ray = new THREE.Raycaster(camera.position, vector.sub(
+                camera.position).normalize());
 
-        for ( let i = 0; i < intersects.length; i ++ ) {
-        intersects[i].object.open("./store.html");
-        }
+                var intersects = ray.intersectObjects(objects);
+
+                if ( intersects.length > 0 ) {
+                window.open ('./store.html')
+            }
 
         renderer.render(scene, camera);
     }
