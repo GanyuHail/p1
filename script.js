@@ -6,7 +6,7 @@
         nearPlane, farPlane,
         geometry, particleCount, sphereMesh,
         i, h, color, size,
-        onDoubleClick,
+        onDoubleClick, raycaster
         materials = [],
         mouseX = 0,
         mouseY = 0,
